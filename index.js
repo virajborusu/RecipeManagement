@@ -15,28 +15,22 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Static uploads folder
 app.use("/uploads", express.static("uploads"));
 
-// ADD THIS 
 app.get("/", (req, res) => {
   res.send("Recipe Management API Running");
 });
 
-// Routes
-// Routes
 app.use("/api/auth", authRoutes);
 console.log("Auth Routes Mounted");
 
 app.use("/api/recipes", recipeRoutes);
 console.log("Recipe Routes Mounted");
 
-// Test Route
 app.get("/test", (req, res) => {
   res.send("Test Route Working");
 });
 
-// MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {

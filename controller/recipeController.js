@@ -1,7 +1,6 @@
 const Recipe = require("../models/Recipe");
 const cloudinary = require("../config/cloudinary");
 
-// CREATE
 exports.addRecipe = async (req, res) => {
   try {
     let imageUrl = "";
@@ -42,7 +41,6 @@ const recipe = await Recipe.create({
   }
 };
 
-// READ ALL
 exports.getRecipes = async (req, res) => {
   try {
     const recipes = await Recipe.find();
@@ -59,7 +57,6 @@ exports.getRecipes = async (req, res) => {
   }
 };
 
-// READ ONE
 exports.getRecipeById = async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.id);
@@ -79,7 +76,6 @@ exports.getRecipeById = async (req, res) => {
   }
 };
 
-// UPDATE
 exports.updateRecipe = async (req, res) => {
   try {
     const recipe = await Recipe.findByIdAndUpdate(
@@ -107,7 +103,7 @@ exports.updateRecipe = async (req, res) => {
   }
 };
 
-// DELETE
+
 exports.deleteRecipe = async (req, res) => {
   try {
     const recipe = await Recipe.findByIdAndDelete(req.params.id);
