@@ -5,6 +5,7 @@ const cors = require("cors");
 
 const authRoutes = require("./router/authRouter");
 const recipeRoutes = require("./router/recipeRouter");
+console.log("Recipe Routes Loaded");
 
 dotenv.config();
 
@@ -17,14 +18,23 @@ app.use(express.urlencoded({ extended: true }));
 // Static uploads folder
 app.use("/uploads", express.static("uploads"));
 
-// ADD THIS 👇
+// ADD THIS 
 app.get("/", (req, res) => {
   res.send("Recipe Management API Running");
 });
 
 // Routes
+// Routes
 app.use("/api/auth", authRoutes);
+console.log("Auth Routes Mounted");
+
 app.use("/api/recipes", recipeRoutes);
+console.log("Recipe Routes Mounted");
+
+// Test Route
+app.get("/test", (req, res) => {
+  res.send("Test Route Working");
+});
 
 // MongoDB Connection
 mongoose
