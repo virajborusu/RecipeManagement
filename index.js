@@ -17,6 +17,11 @@ app.use(express.urlencoded({ extended: true }));
 // Static uploads folder
 app.use("/uploads", express.static("uploads"));
 
+// ADD THIS 👇
+app.get("/", (req, res) => {
+  res.send("Recipe Management API Running");
+});
+
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/recipes", recipeRoutes);
